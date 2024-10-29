@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人通讯录系统</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h1>通讯录管理系统</h1>
+
+<!-- 加载所有联系人 -->
+<div id="contacts-list"></div>
+<button onclick="fetchContacts()">加载所有联系人</button>
+
+<hr>
+
+<!-- 添加联系人 -->
+<h2>添加联系人</h2>
+<input type="text" id="add-name" placeholder="姓名">
+<input type="text" id="add-address" placeholder="地址">
+<input type="text" id="add-phone" placeholder="电话">
+<button onclick="addContact()">添加联系人</button>
+
+<hr>
+
+<!-- 更新联系人 -->
+<h2>更新联系人</h2>
+<input type="number" id="update-id" placeholder="ID">
+<input type="text" id="update-name" placeholder="新姓名">
+<input type="text" id="update-address" placeholder="新地址">
+<input type="text" id="update-phone" placeholder="新电话">
+<button onclick="updateContact()">更新联系人</button>
+
+<hr>
+
+<!-- 删除联系人 -->
+<h2>删除联系人</h2>
+<input type="number" id="delete-id" placeholder="联系人ID">
+<button onclick="deleteContact()">删除联系人</button>
+
+<hr>
+
+<!-- 按姓名查询联系人 -->
+<h2>按姓名查询联系人</h2>
+<input type="text" id="search-name" placeholder="姓名">
+<button onclick="searchContacts()">查询联系人</button>
+<div id="search-results"></div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

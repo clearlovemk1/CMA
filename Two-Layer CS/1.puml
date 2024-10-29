@@ -1,0 +1,43 @@
+@startuml
+
+' 定义类
+class Contact {
+    - id: int
+    - name: String
+    - address: String
+    - phone: String
+    + Contact(id: int, name: String, address: String, phone: String)
+    + getId(): int
+    + setId(id: int): void
+    + getName(): String
+    + setName(name: String): void
+    + getAddress(): String
+    + setAddress(address: String): void
+    + getPhone(): String
+    + setPhone(phone: String): void
+}
+
+class DatabaseConnection {
+    - URL: String
+    - USER: String
+    - PASSWORD: String
+    + getConnection(): Connection
+}
+
+class ContactDAO {
+    + addContact(contact: Contact): void
+    + updateContact(contact: Contact): void
+    + deleteContact(id: int): void
+    + getAllContacts(): List<Contact>
+}
+
+class ContactManagerApp {
+    + main(args: String[]): void
+}
+
+' 定义类之间的关系
+ContactDAO --> DatabaseConnection
+ContactManagerApp --> ContactDAO
+ContactManagerApp --> Contact 
+
+@enduml

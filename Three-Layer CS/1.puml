@@ -1,0 +1,55 @@
+@startuml
+
+package UI {
+    class ContactUI {
+        +displayMenu(): void
+        +showAddContactDialog(): void
+        +showSearchContactDialog(): void
+        +showUpdateContactDialog(): void
+        +showDeleteContactDialog(): void
+    }
+}
+
+package Service {
+    class ContactService {
+        -contactDAO: ContactDAO
+        +addContact(contact: Contact): void
+        +updateContact(contact: Contact): void
+        +deleteContact(id: int): void
+        +getContactsByName(name: String): List<Contact>
+        +getContactById(id: int): Contact
+    }
+}
+
+package DAO {
+    class ContactDAO {
+        +addContact(contact: Contact): void
+        +updateContact(contact: Contact): void
+        +deleteContact(id: int): void
+        +getContactsByName(name: String): List<Contact>
+        +getContactById(id: int): Contact
+    }
+}
+
+package Model {
+    class Contact {
+        -id: int
+        -name: String
+        -address: String
+        -phone: String
+        +getId(): int
+        +setId(id: int): void
+        +getName(): String
+        +setName(name: String): void
+        +getAddress(): String
+        +setAddress(address: String): void
+        +getPhone(): String
+        +setPhone(phone: String): void
+    }
+}
+
+ContactUI --> ContactService
+ContactService --> ContactDAO
+ContactDAO --> Contact
+
+@enduml

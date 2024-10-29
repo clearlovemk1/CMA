@@ -1,0 +1,69 @@
+@startuml
+package com.contactmanager.model {
+    class Contact {
+        - int id
+        - String name
+        - String address
+        - String phone
+        + Contact()
+        + Contact(int id, String name, String address, String phone)
+        + int getId()
+        + void setId(int id)
+        + String getName()
+        + void setName(String name)
+        + String getAddress()
+        + void setAddress(String address)
+        + String getPhone()
+        + void setPhone(String phone)
+        + String toString()
+    }
+}
+
+package com.contactmanager.repository {
+    class ContactRepository {
+        - String jdbcUrl
+        - String jdbcUsername
+        - String jdbcPassword
+        + Connection getConnection()
+        + void addContact(Contact contact)
+        + void deleteContactById(int id)
+        + void updateContact(Contact contact)
+        + List<Contact> findContactsByName(String name)
+        + List<Contact> getAllContacts()
+    }
+}
+
+package com.contactmanager.service {
+    class ContactService {
+        - ContactRepository contactRepository
+        + ContactService()
+        + void addContact(Contact contact)
+        + void deleteContactById(int id)
+        + void updateContact(Contact contact)
+        + List<Contact> findContactsByName(String name)
+        + List<Contact> getAllContacts()
+    }
+}
+
+package com.contactmanager.controller {
+    class ContactController {
+        - ContactService contactService
+        + ContactController(ContactService contactService)
+        + String addContact(Contact contact)
+        + String deleteContactById(int id)
+        + String updateContact(Contact contact)
+        + List<Contact> findContactsByName(String name)
+        + List<Contact> getAllContacts()
+    }
+}
+
+package com.contactmanager.config {
+    class WebConfig {
+        + WebMvcConfigurer corsConfigurer()
+    }
+}
+
+ContactController --> ContactService
+ContactService --> ContactRepository
+ContactRepository --> Contact
+@enduml
